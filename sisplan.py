@@ -5,17 +5,16 @@ from Buttongeneric import *
 
 class CurrentQuestion:
     def __init__(self):
+        
         self.he = 0
         self.ha = 0
         self.re = 0
         self.mo = 0
-        self.score = 0
         self.index = 0
         self.questions = []
         self.init_questions = []
         self.mid_questions = []
         self.end_questions = []
-        
     #Pega 3 perguntas da tabela infância
     def questgeninit(self):
         self.init_questions = self.get_random_questions(self.sheetinit)
@@ -52,6 +51,8 @@ class CurrentQuestion:
             cellansw1 = sheet['B'+str(linend)].value
             cellansw2 = sheet['D'+str(linend)].value
             questions.append((str(linend), cellquest, cellansw1, cellansw2))    
+        cellquest = f"{Points}"
+        questions.append((str(linend),cellquest,cellansw1,cellansw2))    
         return questions
 
     #Pega a próxima pergunta da lista
@@ -59,14 +60,9 @@ class CurrentQuestion:
         if  self.index < len(self.questions):
             question = self.questions[self.index]
             self.index += 1
-            return question 
-        '''
-        elif self.indexend < len(self.questions):
-            questionend = self.questions[self.indexend]
-            self.indexend += 1
-            return questionend
-        '''    
-
+            return question
+         
+  
     #Carrega tabela infantil
     def load_init_table(self, filepath):
         self.tableinit = load_workbook(filepath)
