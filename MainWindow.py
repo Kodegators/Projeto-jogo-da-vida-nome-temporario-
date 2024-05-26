@@ -2,21 +2,21 @@ from tkinter import *
 from sisplan import *
 from openpyxl import *
 from Buttongeneric import *
- 
 
-#Gerando janela
 janela = Tk()
 janela.title("Life´s game")
 janela.geometry('1200x800')
 
 #consultando variaveis
 var = CurrentQuestion()
-var.load_init_table('perguntasinicio.xlsx')
-var.load_mid_table('perguntasmeio.xlsx')
 
-#puxando as perguntas
-var.questgeninit()
-var.questgenmid()
+for i in range(3):
+    var.load_init_table('perguntasinicio.xlsx')
+
+for i in range(3):    
+    var.load_mid_table('perguntasmeio.xlsx')
+
+var.load_end_table('perguntasfim.xlsx')  
 
 #Gerando pergunta
 texto = Label(janela, text = f"", font=('TkDefaultFont',14), wraplength=500)
